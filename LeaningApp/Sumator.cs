@@ -6,7 +6,7 @@ namespace LearningApp
 {
     class Sumator
     {
-        int sum = 0;
+        int sum;
         private int[] Liczby;
         public Sumator(int[] tablica)
         {
@@ -14,6 +14,7 @@ namespace LearningApp
         }
         public int Suma()
         {
+            sum = 0;
             for (int i = 0; i < Liczby.Length; i++)
             {
                 sum += Liczby[i];
@@ -23,6 +24,7 @@ namespace LearningApp
 
         public int Sumal3()
         {
+            sum = 0;
             for (int i = 0; i < Liczby.Length; i++)
             {
                 if (Liczby[i]%3 == 0)
@@ -51,13 +53,14 @@ namespace LearningApp
         public string Indeksy(int lowIndex, int highIndex)
         {
             string calyIndex = "Indeksy pomiedzy "+lowIndex+", a "+highIndex+":";
-            Array.Sort(Liczby);
-            for (int i = 0; i < Liczby.Length; i++)
+            
+            for (int i = lowIndex; i <= highIndex; i++)
             {
-                if (Liczby[i] >= lowIndex && Liczby[i] <= highIndex)
-                {
+                if (i < 0)
+                    i = 0;
+                if (i >= Liczby.Length)
+                    return calyIndex;
                     calyIndex += " "+Liczby[i].ToString();
-                }
             }
             return calyIndex;
         }
